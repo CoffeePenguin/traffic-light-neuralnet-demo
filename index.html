@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信号機判定のニューラルネットワーク</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>信号機判定のニューラルネットワーク</h1>
+    <div class="layer">
+        <div class="neuron" id="r">R</div>
+        <div class="neuron" id="g">G</div>
+        <div class="neuron" id="b">B</div>
+    </div>
+    <div class="svg-container">
+        <svg width="250" height="120">
+          <line class="connection" id="conn-0" x1="50" y1="10" x2="75" y2="120" stroke-width="1" stroke="red" />
+          <text id="conn-0-text" x="50" y="60" fill="black" font-weight="bold"></text>
+          <line class="connection" id="conn-1" x1="50" y1="10" x2="175" y2="120" stroke-width="1" stroke="red" />
+          <text id="conn-1-text" x="70" y="40" fill="black" font-weight="bold"></text>
+          <line class="connection" id="conn-2" x1="125" y1="10" x2="75" y2="120" stroke-width="1" stroke="green" />
+          <text id="conn-2-text" x="100" y="50" fill="black" font-weight="bold"></text>
+          <line class="connection" id="conn-3" x1="125" y1="10" x2="175" y2="120" stroke-width="1" stroke="green" />
+          <text id="conn-3-text" x="120" y="40" fill="black" font-weight="bold" ></text>
+          <line class="connection" id="conn-4" x1="200" y1="10" x2="75" y2="120" stroke-width="1" stroke="blue" />
+          <text id="conn-4-text" x="150" y="50" fill="black" font-weight="bold"></text>
+          <line class="connection" id="conn-5" x1="200" y1="10" x2="175" y2="120" stroke-width="1" stroke="blue" />
+          <text id="conn-5-text" x="180" y="40" fill="black" font-weight="bold"></text>
+        </svg>
+        </div>
+    <div class="layer">
+        <div>
+        <div class="neuron" id="stop">とまれ</div>
+        <br>
+        <span id="stop-value"></span>
+        </div>
+
+        <div>
+        <div class="neuron" id="go">進め</div>
+        <br>
+        <span id="go-value"></span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="section left">
+            <h2>入力してみようね</h2>
+            <div>
+                <label for="r-input">R:</label>
+                <input type="number" id="r-input" min="0" max="255" value="0">
+                <label for="g-input">G:</label>
+                <input type="number" id="g-input" min="0" max="255" value="0">
+                <label for="b-input">B:</label>
+                <input type="number" id="b-input" min="0" max="255" value="0">
+                <button id="input-btn">入力</button>
+            </div>
+            <div>
+                <button id="red-btn">赤</button>
+                <button id="yellow-btn">黄色</button>
+                <button id="green-btn">緑</button>
+            </div>
+
+            <div id="result-palette">
+                <span id="stop-colors"></span>
+                <span id="go-colors"></span>
+                <span id="silence-colors"></span>
+            </div>
+
+            <br>
+            <br>
+
+            <div>
+                <div id="color-display" style="width: 20px; height: 20px; border: 1px solid black; display: none;"></div>
+                <span id="result-text"></span>
+            </div>
+
+            
+        </div>
+        <div class="section right">
+            <h2>学習させようね</h2>
+            <img id="signal-image" class="signal-image" src="image/green.png" alt="信号機">
+            <div>
+                <label><input type="radio" name="learn-color" id="learn-green" value="green" checked> 緑</label>
+                <label><input type="radio" name="learn-color" id="learn-yellow" value="yellow"> 黄色</label>
+                <label><input type="radio" name="learn-color" id="learn-red" value="red"> 赤</label>
+                <br>↑この状況の正解を教えておくれよ<br>
+            </div>
+            <div>
+                <button id="stop-btn">止まれ</button>
+                <button id="go-btn">進め</button>
+            </div>
+            <div>現在の学習回数: <span id="train-count">0</span></div>
+        </div>
+    </div>
+
+    <p>このサイトでは、信号機の色を見て「止まれ」か「進め」かを判断する簡単なAI(ニューラルネットワーク)を、みなさん自身の手で学習させることができます。
+    <br>また、このサイトではニューラルネットワークの重みが可視化されています。学習が進むにつれて、重みの値が変化していく様子を観察できます。
+    </pp>
+
+
+    <div style="font-size: small; background-color: aqua;">
+    <h2> 本サイトの使用方法</h2>
+    最初は、このAIは信号機について何も知らないので、色を入力しても適当な判断しかできません。そこで、「学習させようね」のコーナーで、信号機の色とそれに対する正しい判断を教えてあげましょう。<br>
+    例えば、<span class="blue">青信号</span>のときは「進め」、<span class="yellow">黄色</span>や<span class="red">赤信号</span>のときは「止まれ」と教えます。いろいろなパターンを約30回くらい教えてあげると、AIは信号機の色から正しい判断ができるようになります。<br>
+    学習がうまくいったら、「入力してみようね」のコーナーで実際に色を入力してみてください。赤と黄色で「止まれ」、青で「進め」と判断されれば大成功です！
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
