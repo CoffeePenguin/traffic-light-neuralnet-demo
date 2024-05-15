@@ -1,0 +1,70 @@
+
+body { text-align: center; }
+
+.neuron { 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    border: 2px solid black; 
+    display: inline-block; 
+    margin: 10px; 
+    text-align: center; 
+    line-height: 50px; 
+    font-weight: bold; 
+}
+
+.layer {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+.layer > div {
+    margin: 0 20px;
+}
+
+.connection { stroke: black; }
+.svg-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 60px; 
+}
+text { font-size: 12px; }
+.neuron.active { background-color: yellow;}
+#red-btn { 
+    background-color: rgb(100, 0, 0); 
+    color: white; 
+}
+#yellow-btn { 
+    background-color: rgb(100, 100, 0); 
+    color: white; 
+}
+#green-btn { 
+    background-color: rgb(0, 100, 50); 
+    color: white; 
+}
+.section { 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+}
+
+.container {
+    display: flex;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    flex: 1;
+}
+
+#r { background-color: red; }
+#g { background-color: green; } 
+#b { background-color: blue; }
+
+.blue { color: blue;}
+.red {color: red;}
+.yellow {color: #FFA500;}
